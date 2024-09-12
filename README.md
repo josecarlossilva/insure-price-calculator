@@ -108,7 +108,7 @@ A tabela `Categoria` define as diferentes categorias de produtos e seus respecti
     ```json
     {
         "nome": "Seguro de Vida Individual",
-        "categoria": "AUTO",
+        "categoria": "VIDA",
         "precoBase": -100.0
     }
     ```
