@@ -25,5 +25,14 @@ public class Produto {
     private double precoBase;
 
     private double precoTarifado;
+
+    public void calcularPrecoTarifado() {
+        double precoBase = this.getPrecoBase();
+        Categoria categoria = this.getCategoria();
+
+        double precoTarifado = precoBase + (precoBase * categoria.getIof()) + (precoBase * categoria.getPis()) + (precoBase * categoria.getCofins());
+
+        setPrecoTarifado(precoTarifado);
+    }
     
 }
