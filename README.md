@@ -38,7 +38,7 @@
     ```
 3. Execute o seguinte comando para buildar o `.jar` usando Maven:
     ```sh
-    ./mvnw clean install
+    mvn clean install
     ```
 4. Execute o `.jar` gerado:
     ```sh
