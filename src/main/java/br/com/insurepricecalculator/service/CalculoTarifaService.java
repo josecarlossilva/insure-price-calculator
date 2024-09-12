@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+
 @Service
 public class CalculoTarifaService {
 
@@ -17,12 +19,20 @@ public class CalculoTarifaService {
     private ProdutoRepository produtoRepository;
 
     public Produto calcularPrecoTarifado(Produto produto) {
-        if (produto != null && produto.getPrecoBase() < 0) {
+        if (produto != null && produto.getPrecoBase().compareTo(BigDecimal.ZERO) < 0) {
             throw new ProdutoException("Preço base não pode ser negativo");
         }
 
         if (produto.getCategoria() == null) {
             throw new ProdutoException("Informe uma Categoria para o Produto");
+        }
+
+        //verificar se já esxite um produto com taxa já criado
+        Produto produtoExistente = produtoRepository.findByPrecoBaseAndCategoria(
+                produto.getPrecoBase(), produto.getCategoria());
+
+        if (produtoExistente != null) {
+            return produtoExistente;
         }
 
         try {

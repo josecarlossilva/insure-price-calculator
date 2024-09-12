@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
+
+import java.math.BigDecimal;
 import java.util.Optional;
 
 @SpringBootTest
@@ -26,15 +28,15 @@ public class CalculoTarifaServiceIntegrationTest {
         Produto produto = new Produto();
         produto.setNome("Seguro de Vida Individual");
         produto.setCategoria(Categoria.VIDA);
-        produto.setPrecoBase(100.0);
+        produto.setPrecoBase(new BigDecimal("100.0"));
 
         Produto resultado = calculoTarifaService.calcularPrecoTarifado(produto);
 
-        assertEquals(103.20, resultado.getPrecoTarifado());
+        assertEquals(new BigDecimal("103.20"), resultado.getPrecoTarifado());
 
         Optional<Produto> produtoSalvo = produtoRepository.findById(resultado.getId());
         assertTrue(produtoSalvo.isPresent());
-        assertEquals(103.20, produtoSalvo.get().getPrecoTarifado());
+        assertEquals(new BigDecimal("103.20"), produtoSalvo.get().getPrecoTarifado());
         assertEquals("Seguro de Vida Individual", produtoSalvo.get().getNome());
     }
 
@@ -43,15 +45,15 @@ public class CalculoTarifaServiceIntegrationTest {
         Produto produto = new Produto();
         produto.setNome("Seguro Auto");
         produto.setCategoria(Categoria.AUTO);
-        produto.setPrecoBase(50.0);
+        produto.setPrecoBase(new BigDecimal("50.0"));
 
         Produto resultado = calculoTarifaService.calcularPrecoTarifado(produto);
 
-        assertEquals(55.25, resultado.getPrecoTarifado());
+        assertEquals(new BigDecimal("55.25"), resultado.getPrecoTarifado());
 
         Optional<Produto> produtoSalvo = produtoRepository.findById(resultado.getId());
         assertTrue(produtoSalvo.isPresent());
-        assertEquals(55.25, produtoSalvo.get().getPrecoTarifado());
+        assertEquals(new BigDecimal("55.25"), produtoSalvo.get().getPrecoTarifado());
         assertEquals("Seguro Auto", produtoSalvo.get().getNome());
     }
 
@@ -60,15 +62,15 @@ public class CalculoTarifaServiceIntegrationTest {
         Produto produto = new Produto();
         produto.setNome("Seguro de Viagem");
         produto.setCategoria(Categoria.VIAGEM);
-        produto.setPrecoBase(200.0);
+        produto.setPrecoBase(new BigDecimal("200.0"));
 
         Produto resultado = calculoTarifaService.calcularPrecoTarifado(produto);
 
-        assertEquals(214.00, resultado.getPrecoTarifado());
+        assertEquals(new BigDecimal("214.00"), resultado.getPrecoTarifado());
 
         Optional<Produto> produtoSalvo = produtoRepository.findById(resultado.getId());
         assertTrue(produtoSalvo.isPresent());
-        assertEquals(214.00, produtoSalvo.get().getPrecoTarifado());
+        assertEquals(new BigDecimal("214.00"), produtoSalvo.get().getPrecoTarifado());
         assertEquals("Seguro de Viagem", produtoSalvo.get().getNome());
     }
 
@@ -77,15 +79,15 @@ public class CalculoTarifaServiceIntegrationTest {
         Produto produto = new Produto();
         produto.setNome("Seguro Residencial");
         produto.setCategoria(Categoria.RESIDENCIAL);
-        produto.setPrecoBase(300.0);
+        produto.setPrecoBase(new BigDecimal("300.0"));
 
         Produto resultado = calculoTarifaService.calcularPrecoTarifado(produto);
 
-        assertEquals(321.00, resultado.getPrecoTarifado());
+        assertEquals(new BigDecimal("321.00"), resultado.getPrecoTarifado());
 
         Optional<Produto> produtoSalvo = produtoRepository.findById(resultado.getId());
         assertTrue(produtoSalvo.isPresent());
-        assertEquals(321.00, produtoSalvo.get().getPrecoTarifado());
+        assertEquals(new BigDecimal("321.00"), produtoSalvo.get().getPrecoTarifado());
         assertEquals("Seguro Residencial", produtoSalvo.get().getNome());
     }
 
@@ -94,15 +96,15 @@ public class CalculoTarifaServiceIntegrationTest {
         Produto produto = new Produto();
         produto.setNome("Seguro Patrimonial");
         produto.setCategoria(Categoria.PATRIMONIAL);
-        produto.setPrecoBase(400.0);
+        produto.setPrecoBase(new BigDecimal("400.0"));
 
         Produto resultado = calculoTarifaService.calcularPrecoTarifado(produto);
 
-        assertEquals(432.00, resultado.getPrecoTarifado());
+        assertEquals(new BigDecimal("432.00"), resultado.getPrecoTarifado());
 
         Optional<Produto> produtoSalvo = produtoRepository.findById(resultado.getId());
         assertTrue(produtoSalvo.isPresent());
-        assertEquals(432.00, produtoSalvo.get().getPrecoTarifado());
+        assertEquals(new BigDecimal("432.00"), produtoSalvo.get().getPrecoTarifado());
         assertEquals("Seguro Patrimonial", produtoSalvo.get().getNome());
     }
 }

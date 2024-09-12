@@ -16,6 +16,8 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.math.BigDecimal;
+
 @ExtendWith(MockitoExtension.class)
 public class CalculoTarifaServiceUnitTest {
 
@@ -35,13 +37,13 @@ public class CalculoTarifaServiceUnitTest {
         Produto produto = new Produto();
         produto.setNome("Seguro de Vida Individual");
         produto.setCategoria(Categoria.VIDA);
-        produto.setPrecoBase(100.0);
+        produto.setPrecoBase(new BigDecimal("100.0"));
 
         when(produtoRepository.save(any(Produto.class))).thenReturn(produto);
 
         Produto resultado = calculoTarifaService.calcularPrecoTarifado(produto);
 
-        assertEquals(103.20, resultado.getPrecoTarifado());
+        assertEquals(new BigDecimal("103.20"), resultado.getPrecoTarifado());
         verify(produtoRepository, times(1)).save(produto);
     }
 
@@ -50,13 +52,13 @@ public class CalculoTarifaServiceUnitTest {
         Produto produto = new Produto();
         produto.setNome("Seguro Auto");
         produto.setCategoria(Categoria.AUTO);
-        produto.setPrecoBase(50.0);
+        produto.setPrecoBase(new BigDecimal("50.0"));
 
         when(produtoRepository.save(any(Produto.class))).thenReturn(produto);
 
         Produto resultado = calculoTarifaService.calcularPrecoTarifado(produto);
 
-        assertEquals(55.25, resultado.getPrecoTarifado());
+        assertEquals(new BigDecimal("55.25"), resultado.getPrecoTarifado());
         verify(produtoRepository, times(1)).save(produto);
     }
 
@@ -65,13 +67,13 @@ public class CalculoTarifaServiceUnitTest {
         Produto produto = new Produto();
         produto.setNome("Seguro de Viagem");
         produto.setCategoria(Categoria.VIAGEM);
-        produto.setPrecoBase(200.0);
+        produto.setPrecoBase(new BigDecimal("200.0"));
 
         when(produtoRepository.save(any(Produto.class))).thenReturn(produto);
 
         Produto resultado = calculoTarifaService.calcularPrecoTarifado(produto);
 
-        assertEquals(214.00, resultado.getPrecoTarifado());
+        assertEquals(new BigDecimal("214.00"), resultado.getPrecoTarifado());
         verify(produtoRepository, times(1)).save(produto);
     }
 
@@ -80,13 +82,13 @@ public class CalculoTarifaServiceUnitTest {
         Produto produto = new Produto();
         produto.setNome("Seguro Residencial");
         produto.setCategoria(Categoria.RESIDENCIAL);
-        produto.setPrecoBase(300.0);
+        produto.setPrecoBase(new BigDecimal("300.0"));
 
         when(produtoRepository.save(any(Produto.class))).thenReturn(produto);
 
         Produto resultado = calculoTarifaService.calcularPrecoTarifado(produto);
 
-        assertEquals(321.00, resultado.getPrecoTarifado());
+        assertEquals(new BigDecimal("321.00"), resultado.getPrecoTarifado());
         verify(produtoRepository, times(1)).save(produto);
     }
 
@@ -95,13 +97,13 @@ public class CalculoTarifaServiceUnitTest {
         Produto produto = new Produto();
         produto.setNome("Seguro Patrimonial");
         produto.setCategoria(Categoria.PATRIMONIAL);
-        produto.setPrecoBase(400.0);
+        produto.setPrecoBase(new BigDecimal("400.0"));
 
         when(produtoRepository.save(any(Produto.class))).thenReturn(produto);
 
         Produto resultado = calculoTarifaService.calcularPrecoTarifado(produto);
 
-        assertEquals(432.00, resultado.getPrecoTarifado());
+        assertEquals(new BigDecimal("432.00"), resultado.getPrecoTarifado());
         verify(produtoRepository, times(1)).save(produto);
     }
 
@@ -109,7 +111,7 @@ public class CalculoTarifaServiceUnitTest {
     public void testCalculoPrecoSemCategoria() {
         Produto produto = new Produto();
         produto.setNome("Produto Sem Categoria");
-        produto.setPrecoBase(100.0);
+        produto.setPrecoBase(new BigDecimal("100.0"));
 
         Exception exception = assertThrows(ProdutoException.class, () -> {
             calculoTarifaService.calcularPrecoTarifado(produto);
@@ -126,7 +128,7 @@ public class CalculoTarifaServiceUnitTest {
         Produto produto = new Produto();
         produto.setNome("Produto com Preço Base Negativo");
         produto.setCategoria(Categoria.VIDA);
-        produto.setPrecoBase(-100.0);
+        produto.setPrecoBase(new BigDecimal("-100.0"));
 
         Exception exception = assertThrows(ProdutoException.class, () -> {
             calculoTarifaService.calcularPrecoTarifado(produto);
@@ -143,13 +145,13 @@ public class CalculoTarifaServiceUnitTest {
         Produto produto = new Produto();
         produto.setNome("Produto com Preço Base Zero");
         produto.setCategoria(Categoria.RESIDENCIAL);
-        produto.setPrecoBase(0.0);
+        produto.setPrecoBase(new BigDecimal("0.0"));
 
         when(produtoRepository.save(any(Produto.class))).thenReturn(produto);
 
         Produto resultado = calculoTarifaService.calcularPrecoTarifado(produto);
 
-        assertEquals(0.0, resultado.getPrecoTarifado());
+        assertEquals(new BigDecimal("0.00"), resultado.getPrecoTarifado());
         verify(produtoRepository, times(1)).save(produto);
     }
 
@@ -160,7 +162,7 @@ public class CalculoTarifaServiceUnitTest {
         Produto produto = new Produto();
         produto.setNome("Produto Teste");
         produto.setCategoria(Categoria.RESIDENCIAL);
-        produto.setPrecoBase(100.0);
+        produto.setPrecoBase(new BigDecimal("100.0"));
 
         doThrow(new ProdutoException(message)).when(produtoRepository).save(produto);
 
