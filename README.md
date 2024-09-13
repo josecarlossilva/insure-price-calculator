@@ -179,6 +179,22 @@ A tabela `Categoria` define as diferentes categorias de produtos e seus respecti
         "msg": "Informe uma Categoria para o Produto"
     }
     ```
+### Swagger UI
+
+A aplicação utiliza o Swagger para documentação da API. O Swagger UI fornece uma interface gráfica interativa para explorar e testar os endpoints da API.
+
+#### Como Acessar o Swagger UI
+
+1. **Abra o Navegador Web**:
+   Abra seu navegador web preferido e acesse o seguinte URL:
+
+   ```text
+   http://localhost:8080/swagger-ui.html
+   ```
+
+2. **Explorar a API**:
+   Na interface do Swagger UI, você pode explorar todos os endpoints disponíveis, visualizar suas descrições, parâmetros necessários, tipos de retorno, e testar chamadas diretamente.
+
 
 ## Tipos de Testes Criados para Validar a Aplicação
 
