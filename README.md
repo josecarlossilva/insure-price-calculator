@@ -116,7 +116,7 @@ A tabela `Categoria` define as diferentes categorias de produtos e seus respecti
 
 ## Testando a API via Postman
 
-### Endpoint: Calcular Preço Tarifado
+### Endpoint: Calcular
 
 #### Request
 - **URL:** `http://localhost:8080/produtos/calcular`
