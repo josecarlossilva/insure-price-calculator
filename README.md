@@ -42,8 +42,8 @@
     "id": "8cfb5eb2-fd93-4322-bb74-c82f27c95a47",
     "nome": "Seguro de Vida Individual",
     "categoria": "VIDA",
-    "precoBase": 100.0,
-    "precoTarifado": 103.2
+    "preco_base": 100.0,
+    "preco_tarifado": 103.2
 }
 ```
 
@@ -128,7 +128,7 @@ A tabela `Categoria` define as diferentes categorias de produtos e seus respecti
     {
         "nome": "Seguro de Vida Individual",
         "categoria": "VIDA",
-        "precoBase": 100.0
+        "preco_base": 100.0
     }
     ```
 
@@ -140,8 +140,8 @@ A tabela `Categoria` define as diferentes categorias de produtos e seus respecti
         "id": "8cfb5eb2-fd93-4322-bb74-c82f27c95a47",
         "nome": "Seguro de Vida Individual",
         "categoria": "VIDA",
-        "precoBase": 100.0,
-        "precoTarifado": 103.2
+        "preco_base": 100.0,
+        "preco_tarifado": 103.2
     }
     ```
 
@@ -154,7 +154,7 @@ A tabela `Categoria` define as diferentes categorias de produtos e seus respecti
     {
         "nome": "Seguro de Vida Individual",
         "categoria": "VIDA",
-        "precoBase": -100.0
+        "preco_base": -100.0
     }
     ```
 - **Response:**
@@ -170,7 +170,7 @@ A tabela `Categoria` define as diferentes categorias de produtos e seus respecti
     ```json
     {
         "nome": "Seguro de Vida Individual",
-        "precoBase": 100.0
+        "preco_base": 100.0
     }
     ```
 - **Response:**
@@ -201,11 +201,10 @@ A tabela `Categoria` define as diferentes categorias de produtos e seus respecti
 - **Configuração:** A aplicação expõe métricas para Prometheus na URL `/actuator/prometheus`.
 - **Integração:** Adicione a configuração no Prometheus para coletar estas métricas. Pesquise a palavra **``calcular``** (nome do recurso) no navegador para monitoração das requisições do recurso.
 
-### Logs
+## Configuração de Logs
 
-- **SLF4J:** Framework de logging utilizado para registrar logs da aplicação.
-- **Logs de Exceções:** Todos os erros capturados são registrados com detalhes no log.
+A aplicação utiliza Logback para gerenciamento de logs. A configuração do Logback pode ser ajustada tanto no `logback.xml` quanto no `application.properties`.
 
 ---
 
-Esperamos que este guia ajude na execução e validação da aplicação. Sinta-se à vontade para contribuir e reportar quaisquer problemas encontrados!
+Sinta-se à vontade para contribuir e reportar quaisquer problemas encontrados!

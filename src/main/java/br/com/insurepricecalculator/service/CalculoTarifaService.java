@@ -19,11 +19,15 @@ public class CalculoTarifaService {
     private ProdutoRepository produtoRepository;
 
     public Produto calcularPrecoTarifado(Produto produto) {
+        if (produto != null && produto.getPrecoBase() == null) {
+            throw new ProdutoException("Informe um preço base.");
+        }
+
         if (produto != null && produto.getPrecoBase().compareTo(BigDecimal.ZERO) < 0) {
             throw new ProdutoException("Preço base não pode ser negativo");
         }
 
-        if (produto.getCategoria() == null) {
+        if (produto != null && produto.getCategoria() == null) {
             throw new ProdutoException("Informe uma Categoria para o Produto");
         }
 
